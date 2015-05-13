@@ -1,0 +1,109 @@
+
+
+
+@keyframes page-tab-slide-in-from-left {
+	from {
+		left: -500px;
+	}
+	to {
+		left: 0px;
+	}
+}
+
+@define-mixin page-tab {
+	& {
+		z-index: 100;
+
+		position: fixed;
+		left: 0;
+		top: 100px;
+		
+		display: block;
+		
+		padding: 10px;
+		
+		background: #ffffff;
+		border-top: 3px solid #d9e7ff;
+		border-bottom: 3px solid #d9e7ff;
+		border-right: 3px solid #d9e7ff;
+		
+		font-weight: bold;
+		
+		animation: 0.3s page-tab-slide-in-from-left forwards;
+	}
+
+	&:hover,
+	&:focus {
+		box-shadow: 0 0 0 2px #1e72ff, 0 0 8px 4px rgba(0, 0, 0, 0.15);
+
+		outline: none;
+	}
+	
+}
+
+
+
+/* via http://www.transformicons.com/ */
+@define-mixin _hamburger-line $width: 30px, $height: 4px, $transition-time: 0.3s {
+	position: relative;
+
+	display: inline-block;
+
+	width: $(width);
+	height: $(height);
+
+	background: #000000;
+	background: currentColor;
+
+	border-radius: $height/2;
+
+	transition: $transition-time;
+
+	transform-origin: 50% 50%;
+}
+
+@define-mixin hamburger-transformicon $width: 30px, $height: 4px, $spacing: 8px, $transition-time: 0.3s {
+	@mixin _hamburger-line $(width), $(height), $(transition-time);
+
+	vertical-align: middle;
+
+	&:before {
+		@mixin _hamburger-line $(width), $(height), $(transition-time);
+
+		content: '';
+
+		position: absolute;
+		top: $(spacing);
+		left: 0;
+	}
+
+	&:after {
+		@mixin _hamburger-line $(width), $(height), $(transition-time);
+		
+		content: '';
+
+		position: absolute;
+		top: -$(spacing);
+		left: 0;
+	}
+
+}
+
+@define-mixin xcross-transformicon $width: 30px, $height: 4px, $spacing: 8px, $transition-time: 0.3s {
+	@mixin hamburger-transformicon $(width), $(height), $(spacing), $(transition-time);
+
+	background: transparent;
+
+	&:before {
+		top: 0;
+
+		transform: rotate3d(0, 0, 1, 45deg);
+	}
+
+	&:after {
+		top: 0;
+
+		transform: rotate3d(0, 0, 1, -45deg);
+	}
+
+}

@@ -1,0 +1,59 @@
+@import '../utility-mixins';
+
+
+
+// Lists
+//
+// List out many items
+
+
+// Piped List
+//
+// Make sure to add the `.is-last` class to the last item in a piped-list. If the `.is-last` class is forgotten, there will be some extra spacing on the last child in IE7-8
+//
+// Markup:
+// <ul class="piped-list">
+// 	<li class="piped-list-item">Privacy Policy</li>
+// 	<li class="piped-list-item">Terms of Use</li>
+// 	<li class="piped-list-item">Site Map</a></li>
+// 	<li class="piped-list-item is-last">Contact Us</li>
+// </ul>
+/*ul*/.piped-list {
+	@include clearfix;
+
+	list-style: none;
+
+	// Not needed anymore because of the foundation
+	// Kept here because `ul` is famous for adding margin/padding
+	//margin: 0;
+	//padding: 0;
+}
+
+/*li*/.piped-list-item {
+	$piped-list-spacing: 0.5em;
+
+	float: left;
+
+	margin: 0;
+	padding: 0;
+	padding-right: $piped-list-spacing;
+
+	// The `.is-last` is only for ie7 and ie8.
+	// If forgotten in the markup, it is not a big deal because `:last-child` makes up for it
+	&:last-child {
+		padding-right: 0;
+	}
+	// They need to be seperate because ie8 is super weird and doesn't parse it correctly (ie7 does :/)
+	&.is-last {
+		padding-right: 0;
+	}
+	
+	// Only put padding on the left on siblings
+	// This is the most cross-browser way to do this kind of thing (old ie doesn't support `:first-child`, `:last-child` stuff)
+	& + & {
+		padding-left: $piped-list-spacing;
+
+		border-left: 1px solid;
+	}
+
+}

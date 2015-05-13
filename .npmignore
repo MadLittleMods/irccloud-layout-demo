@@ -1,0 +1,7 @@
+.gitignore
+
+node_modules/
+
+#project/
+todo.md
+gulpfile.js

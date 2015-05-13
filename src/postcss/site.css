@@ -1,0 +1,736 @@
+
+$medium-breakpoint: 960px;
+$small-breakpoint: 750px;
+
+:root {
+	--member-list-sidebar-width: 170px; /* 13vw; */
+	--network-list-sidebar-width: 200px; /* 15vw; */
+}
+
+@media (max-width: $(small-breakpoint)) {
+	:root {
+		--member-list-sidebar-width: 200px;
+		--network-list-sidebar-width: 230px;
+	}
+
+}
+
+
+
+
+body {
+	background-color: $site-background-color;
+
+	color: $primary-font-color;
+	font: 400 95%/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	tab-size: 4;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px
+}
+::-webkit-scrollbar-track-piece {
+	background-color: #f5f5f5;
+	background-clip: padding-box;
+	border: 2px solid #ffffff;
+
+	border-radius: 4px
+}
+::-webkit-scrollbar-thumb {
+	background-color: $accent-font-color;
+	background-clip: padding-box;
+	border: 2px solid #ffffff;
+
+	border-radius: 4px
+}
+
+hr {
+	display: block;
+
+	width: 100%;
+	height: 0;
+
+	border: 0;
+	border-bottom: 1px solid #c0dbff;
+}
+
+
+
+
+.visually-hidden {
+	@mixin visually-hidden;
+}
+
+.hidden {
+	display: none;
+}
+
+
+/* Skip links are for keyboard users to easily move around to specific point in the page (document fragment) */
+.accessibility-skip-link {
+	@mixin visually-hidden;
+
+	/* We only want this visible via keyboard focus */
+	&:focus {
+		@mixin cancel-visually-hidden;
+
+		/* This will double up the `:focus` and `:hover` states but need to overwrite the cancel mixin above */
+		@mixin page-tab;
+	}
+
+}
+
+/* Used with `aria-describedby` to provide a better description of where the link will go */
+.accessibility-skip-link-description {
+	@mixin visually-hidden;
+}
+
+
+
+
+
+.header-offset-wrapper {
+	margin-left: -var(--member-list-sidebar-width);
+
+	@media (max-width: $(medium-breakpoint)) {
+		margin-left: 0;
+	}
+}
+
+.header-reset-offset-wrapper {
+	position: relative;
+	left: var(--member-list-sidebar-width);
+
+	@media (max-width: $(medium-breakpoint)) {
+		left: 0;
+	}
+}
+
+:root {
+	--site-header-height: 36px;
+}
+.site-header {
+	display: flex;
+	/* main-axis */
+	justify-content: space-between;
+	/* cross-axis */
+	align-items: center;
+
+	width: calc(100vw - var(--network-list-sidebar-width));
+	height: var(--site-header-height);
+
+	padding-left: 4px;
+
+	@media (max-width: $(medium-breakpoint)) {
+		display: none;
+	}
+
+}
+.status-action-list {
+	& a {
+		color: $accent-font-color;
+
+		&:hover {
+			color: $accent-color;
+		}
+
+	}
+
+	& > .user-email {
+		font-weight: bold;
+
+		& > a {
+			color: $primary-font-color;
+		}
+	}
+
+}
+
+
+.main-wrapper {
+	display: flex;
+	/* cross-axis */
+	align-items: stretch;
+	/* cross-axis extra space */
+	align-content: stretch;
+
+	height: 100%;
+}
+
+
+.main-area {
+	position: relative;
+
+	flex: 1;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.network-list-sidebar {
+	/* For Firefox, so that we can see the hover handles above the main section */
+	z-index: 2;
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+
+	/* We set to local `--_root-self-width` to ease maintainability in the future if this expression gets more complicated */
+	/* We reference this width later on down the chain so it is best to not have to duplicate this logic */
+	--_root-self-width: var(--network-list-sidebar-width);
+	width: var(--_root-self-width);
+
+	outline: none;
+
+	transition: width 100ms ease;
+
+	@media (max-width: $(medium-breakpoint)) {
+		order: -1;
+	}
+
+	@media (max-width: $(small-breakpoint)) {
+		
+		width: 0;
+
+		&:hover,
+		&:focus, 
+		.network-list-sidebar-trigger-menu-checkbox:checked ~ * & {
+			/* Reset back to normal */
+			width: var(--_root-self-width);
+		}
+
+
+		&:before {
+			content: '';
+
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: -8px;
+
+			width: 8px;
+
+			/*background: rgba(255, 0, 0, 0.5); */
+		}
+
+	}
+
+}
+.network-list-sidebar-inner {
+	overflow: hidden;
+
+	flex: 1;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.network-list-wrapper {
+	overflow-y: auto;
+	
+	flex: 1;
+
+	padding: 10px;
+
+	/*
+	background:
+		// Shadow covers
+		linear-gradient($site-background-color, $site-background-color 30%, rgba(255,255,255,0) 30%),
+		linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 70%, $site-background-color 70%) 0 100%,      
+		
+		// Shadows
+		linear-gradient($accent-font-color, $accent-font-color 50%, #000000 50%, #000000 55%, rgba(255,255,255,0) 50%),
+		linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 50%, #000000 50%, #000000 55%, $accent-font-color 55%) 0 100%;
+	*/
+	
+	/* background-repeat: no-repeat; */
+	/* background-color: transparent; */ /* $site-background-color */
+	/* background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px; */
+	/* Opera doesn't support this in the shorthand */
+	/* background-attachment: local, local, scroll, scroll; */
+
+	@media (max-width: $(medium-breakpoint)) {
+		padding: 5px;
+	}
+
+	@media (max-width: $(small-breakpoint)) {
+		/* Hide from keyboard users */
+		display: none;
+
+		.network-list-sidebar:hover &,
+		.network-list-sidebar:focus &,
+		.network-list-sidebar-trigger-menu-checkbox:checked ~ * & {
+			display: block;
+		}
+	}
+
+}
+
+
+/* This is what we change the width on */
+:root {
+	--channel-header-height: 2em;
+}
+.member-list-sidebar {
+	overflow: visible;
+	/* For Firefox, so that we can see the hover handles above the main section */
+	z-index: 2;
+	position: relative;
+	/* Stop from overlapping the site header */
+	/* This is set back to auto in a more child element */
+	pointer-events: none;
+
+	display: flex;
+	flex-direction: column;
+
+	/* We set to local `--_root-self-width` to ease maintainability in the future if this expression gets more complicated */
+	/* We reference this width later on down the chain so it is best to not have to duplicate this logic */
+	--_root-self-width: var(--member-list-sidebar-width);
+	width: var(--_root-self-width);
+
+	outline: none;
+
+	transition: width 100ms ease;
+	
+	
+	@media (max-width: $(small-breakpoint)) {
+		width: 0;
+
+		&:hover,
+		&:focus,
+		.member-list-sidebar-trigger-menu-checkbox:checked ~ * & {
+			/* Reset back to normal */
+			width: var(--_root-self-width);
+		}
+
+		&:before {
+			content: '';
+
+			pointer-events: auto;
+
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -8px;
+
+			width: 8px;
+
+			/*background: rgba(255, 0, 0, 0.5); */
+		}
+
+	}
+
+}
+
+/* This is what we hide all the overflow with */
+.member-list-sidebar-inner {
+	overflow: hidden;
+
+	flex: 1;
+
+	display: flex;
+	flex-direction: column;
+}
+
+/* This is the sidebar part */
+.member-list-wrapper {
+	overflow-y: auto;
+	/* Reset back to normal to capture mouse stuff */
+	pointer-events: auto;
+
+	flex: 1;
+
+	margin-top: calc(var(--site-header-height) + var(--channel-header-height));
+
+	background-color: $secondary-main-color;
+	border-left: 1px solid #c0dbff;
+
+	@media (max-width: $(medium-breakpoint)) {
+		margin-top: 0;
+	}
+
+	@media (max-width: $(small-breakpoint)) {
+		/* Hide from keyboard users */
+		display: none;
+
+		.member-list-sidebar:hover &,
+		.member-list-sidebar:focus &,
+		.member-list-sidebar-trigger-menu-checkbox:checked ~ * & {
+			display: block;
+		}
+	}
+
+}
+
+
+
+
+
+
+.channel-list-group {
+}
+
+
+@define-mixin channel-list-item-is-unread {
+	font-weight: bold;
+
+	&:before {
+		content: '';
+
+		position: absolute;
+		top: 0;
+		left: -5px;
+
+		width: 5px;
+		height: 100%;
+
+		background-color: $accent-font-color;
+	}
+
+}
+@define-mixin channel-list-item {
+	position: relative;
+
+	display: block;
+
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 16px;
+
+	color: $accent-color;
+
+	transition: background 0.05 ease;
+
+	&:hover {
+		background-color: $separator-color;
+	}
+
+	&:hover, &:visited {
+		color: $accent-color;
+	}
+	
+	&.is-unread {
+		@mixin channel-list-item-is-unread;
+	}
+
+	@media (max-width: $(medium-breakpoint)) {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 16px;
+	}
+
+}
+
+
+
+
+
+.channel-list-network-name {
+	@mixin channel-list-item;
+
+	.channel-list-group.is-unread > & {
+		@mixin channel-list-item-is-unread;
+	}
+
+	background-color: $secondary-main-color;
+	border-bottom: 1px solid $separator-color;
+}
+
+.channel-list {
+	background-color: #f2f7fc;
+}
+
+.channel-list-item {
+	@mixin channel-list-item;
+}
+
+
+
+
+
+.channel-header {
+	
+	width: calc(100vw - var(--network-list-sidebar-width));
+
+	padding: 0.5em;
+
+	background-color: #f2f7fc;
+	border-bottom: 1px solid #c0dbff;
+
+	border-top-right-radius: 4px;
+
+	@media (max-width: $(medium-breakpoint)) {
+		width: 100%;
+		border-top-right-radius: 0;
+	}
+
+}
+
+.network-list-sidebar-trigger {
+	
+	color: $accent-color;
+
+	&:hover,
+	&:focus,
+	.network-list-sidebar-trigger-menu-checkbox:focus ~ * & {
+		color: color($accent-color w(+50%));
+	}
+
+
+	@media (max-width: $(small-breakpoint)) {
+		@mixin cursor-hand;
+
+		display: inline-block;
+
+		height: 14px;
+	}
+}
+
+.network-list-sidebar-trigger-icon {
+
+	@media (max-width: $(small-breakpoint)) {
+		@mixin hamburger-transformicon 16px, 2px, 4px;
+
+		margin-top: 10px;
+		margin-bottom: 10px;
+
+		.network-list-sidebar-trigger-menu-checkbox:checked ~ * & {
+			@mixin xcross-transformicon 16px, 2px, 4px;
+		}
+	}
+
+}
+
+.channel-header-name {
+	display: inline-block;
+}
+
+.channel-header-topic {
+	color: $secondary-font-color;
+}
+
+.channel-area {
+	overflow: hidden;
+	position: relative;
+
+	flex: 1;
+
+	display: flex;
+	flex-direction: column;
+
+
+	background-color: $primary-main-color;
+}
+
+.channel-message-list {
+	overflow-y: auto;
+	flex: 1;
+
+	line-height: 1.3;
+}
+
+.channel-message-row {
+	display: flex;
+
+	margin-top: 7px;
+	margin-bottom: 7px;
+	padding-right: 15px;
+
+	& > .date {
+		width: 60px;
+
+		color: #aaaaaa;
+		font-size: 11px;
+		line-height: 1.4;
+		text-align: center;
+	}
+
+	& > .message-wrapper {
+		flex: 1;
+
+		& > .author {
+			font-weight: bold;
+		}
+
+		& > .message {
+
+		}
+	}
+
+}
+
+
+.channel-input-wrapper {
+	overflow: hidden;
+
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+
+	padding: 10px;
+
+	& > .date {
+		width: 60px;
+
+		color: #aaaaaa;
+		font-size: 11px;
+		text-align: center;
+	}
+
+}
+
+.channel-input-box {
+	flex: 1;
+
+	display: flex;
+	align-items: stretch;
+
+	border-top: 1px solid #999999;
+	border-left: 1px solid #bbbbbb;
+	border-bottom: 1px solid #bbbbbb;
+	border-right: 1px solid #bbbbbb;
+
+	box-shadow: inset 1px 1px 0 #dddddd;
+
+	border-radius: 3px;
+
+	& > .nick {
+		display: flex;
+		align-items: center;
+
+		padding-left: 5px;
+		padding-right: 5px;
+
+		background-color: #eee;
+		background-image: linear-gradient(to bottom, #eeeeee, #ffffff);
+		border-right: 1px solid rgba(0, 0, 0, 0.2);
+
+		box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+
+		font-weight: bold;
+
+	}
+
+	& > .channel-input-textarea {
+		flex: 1;
+
+		overflow: auto;
+
+		min-height: 30px;
+		max-height: 50vh;
+		
+		padding: 5px;
+
+		background: transparent;
+		border: 0;
+
+		resize: none;
+	}
+
+	& > .channel-input-submit {
+		padding-left: 10px;
+		padding-right: 10px;
+
+		background: transparent;
+		border: 0;
+
+		color: rgba(0, 0, 0, 0.5);
+		font-size: 18px;
+
+		&:hover {
+			@mixin cursor-hand;
+		}
+
+		&:before {
+			/*content: '\0025b2'; */
+			/*content: '\0027a8'; */
+			content: '\0027a7';
+
+			display: block;
+
+			/*transform: rotateZ(-90deg); */
+			transform: rotateZ(-90deg) scaleX(1.5);
+
+			/*font-family: 'Arial Unicode MS', sans-serif; */
+			font-family: 'Segoe UI Symbol', Arial, sans-serif;
+			
+		}
+	}
+}
+
+
+
+
+
+.member-list-group {
+
+	padding: 8px;
+
+	&.is-ops-section {
+		background-color: #fef2f2;
+		border-bottom: 1px solid #fac9cb;
+	}
+
+}
+
+.member-list-group-title {
+	color: #666666;
+	font-weight: normal;
+
+	margin-bottom: 9px;
+
+	.member-list-group.is-ops-section > & {
+		color: #ba1719;
+	}
+
+}
+
+.member-list {
+
+}
+
+.member-list-item {
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+
+	@media (max-width: $(medium-breakpoint)) {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+}
+
+
+
+
+
+.sidebar-footer {
+	margin-top: 10px;
+
+	font-size: 80%;
+	line-height: 1.3;
+
+	& a {
+		color: $accent-font-color;
+	}
+}
+
+.sidebar-footer-list {
+
+}
+
+.sidebar-footer-list-item {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}

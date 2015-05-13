@@ -1,0 +1,70 @@
+/* 
+ * Use if the element should be read by screen-readers but still be hidden. 
+ * See: http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * Compatible in IE6+
+ */
+@define-mixin visually-hidden {
+	position: absolute;
+
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+
+	margin: -1px;
+	padding: 0;
+
+	border: 0;
+}
+
+/*
+ * Cancel the properties added by `visually-hidden`. Good for showing the element on `:focus`, etc
+ * 
+ * Compatible in IE6+
+ */
+@define-mixin cancel-visually-hidden {
+	position: relative;
+
+	overflow: visible;
+	clip: auto;
+	width: auto;
+	height: auto;
+
+	margin: 0;
+	padding: 0;
+
+	border: 0;
+}
+
+
+/*
+ * Add this to a parent element to self clear the children. 
+ * See: http://nicolasgallagher.com/micro-clearfix-hack/
+ *
+ * Compatible in IE?, Firefox 3.5+, Safari 4+, Chrome, Opera 9+
+ */
+@define-mixin clearfix {
+	&:before,
+	&:after {
+		/* The space is necessary for a Opera bug */
+		content: ' ';
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+
+/*
+ * Cross browser pointer/link style cursor.
+ * See: http://stackoverflow.com/a/2076480/796832
+ *
+ * Compatible in IE5+, Firefox, Chrome, Safari, Opera
+ */
+@define-mixin cursor-hand {
+	cursor: pointer;
+	cursor: hand;
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>IRCCloud Layout Experiment - Eric Eastwood</title>
+
+	<link rel="stylesheet" href="css/all.css">
+</head>
+<body>
+
+
+	<input type="checkbox" id="network-list-sidebar-trigger-menu-checkbox" class="network-list-sidebar-trigger-menu-checkbox hidden">
+	<input type="checkbox" id="member-list-sidebar-trigger-menu-checkbox" class="member-list-sidebar-trigger-menu-checkbox hidden">
+
+	<div class="main-wrapper">
+		<main class="main-area" role="main">
+			<div class="header-offset-wrapper">
+				<div class="header-reset-offset-wrapper">
+
+					<header class="site-header" role="banner">
+						<h1><a href="https://github.com/MadLittleMods/irccloud-layout-demo">IRCCloud Layout Experiment</a></h1>
+
+						<div>
+							<ul class="status-action-list piped-list" role="navigation" aria-label="Personal">
+								<li class="piped-list-item user-email"><a href="mailto:contact@ericeastwood.com">contact@ericeastwood.com</a></li>
+								<li class="piped-list-item"><a href="#0">Settings</a></li>
+								<li class="piped-list-item"><a href="#0">Shortcuts</a></li>
+								<li class="piped-list-item"><a href="#0">Sign out</a></li>
+							</ul>
+						</div>
+					</header>
+
+					<header class="channel-header">
+						<label for="network-list-sidebar-trigger-menu-checkbox" class="network-list-sidebar-trigger">
+							<span class="network-list-sidebar-trigger-icon"></span>
+							<span class="visually-hidden">Open the Network and Channel List</span>
+						</label>
+
+						<h2 id="aria-channel-heading" class="channel-header-name">#svg</h2>
+						<span class="channel-header-topic">Scalable Vector Graphics || *Please* be patient and hold for an answer!</span>
+					</header>
+
+				</div>
+			</div>
+
+			<div class="channel-area" aria-labelledby="aria-channel-heading">
+				<a href="#skip-link-after-channel-message-list" class="accessibility-skip-link" aria-describedby="aria-after-channel-message-list-skip-link-description">
+					Skip over channel messages
+					<div class="accessibility-skip-link-description" id="aria-after-channel-message-list-skip-link-description">Press Enter</div>
+				</a>
+
+				<ul class="channel-message-list" tabindex="0" aria-label="Channel messages" aria-live="polite" role="log">
+					<li class="channel-message-row">
+						<div class="date">3:33 PM</div>
+						<div class="message-wrapper">
+							<a class="author">MLM</a>
+							<span class="message">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</span>
+						</div>
+					</li>
+					<li class="channel-message-row">
+						<div class="date">3:35 PM</div>
+						<div class="message-wrapper">
+							<a class="author">MLM</a>
+							<span class="message">Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</span>
+						</div>
+					</li>
+				</ul>
+
+				<div id="skip-link-after-channel-message-list" tabindex="-1"></div>
+
+				<section class="channel-input-wrapper">
+					<div class="date">3:37 PM</div>
+					<div class="channel-input-box">
+						<div class="nick">MLM</div>
+						<label class="visually-hidden" for="id-form-textarea-message">New message</label>
+
+						<!-- textarea id="id-form-textarea-message" class="channel-input-textarea" aria-label="Message" role="textbox"></textarea> -->
+						<div id="id-form-textarea-message" class="channel-input-textarea" role="textbox" contenteditable></div>
+
+						<button class="channel-input-submit" aria-label="Submit message">
+							<span class="visually-hidden">Submit</span>
+						</button>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<aside class="member-list-sidebar" aria-label="Member list">
+			<div class="member-list-sidebar-inner">
+				<a href="#skip-link-after-member-list" class="accessibility-skip-link" aria-describedby="aria-after-member-list-skip-link-description">
+					Skip over Member List
+					<div class="accessibility-skip-link-description" id="aria-after-member-list-skip-link-description">Press Enter</div>
+				</a>
+
+				<div class="member-list-wrapper">
+					<section class="member-list-group is-ops-section">
+						<h2 id="aria-member-list-ops-section-heading" class="member-list-group-title">
+							Ops
+						</h2>
+						<ul class="member-list" aria-labelledby="aria-member-list-ops-section-heading" role="list">
+							<li class="member-list-item"><a href="#0">Eric</a></li>
+						</ul>
+					</section>
+					<section class="member-list-group">
+						<h2 id="aria-member-list-members-section-heading" class="member-list-group-title">
+							Members
+						</h2>
+						<ul class="member-list" aria-labelledby="aria-member-list-members-section-heading" role="list">
+							<li class="member-list-item"><a href="#0">MLM</a></li>
+							<li class="member-list-item"><a href="#0">dominicgs</a></li>
+							<li class="member-list-item"><a href="#0">loktar</a></li>
+							<li class="member-list-item"><a href="#0">fippo</a></li>
+							<li class="member-list-item"><a href="#0">ThiefMaster</a></li>
+							<li class="member-list-item"><a href="#0">saghul</a></li>
+							<li class="member-list-item"><a href="#0">phated</a></li>
+							<li class="member-list-item"><a href="#0">LucDanton</a></li>
+							<li class="member-list-item"><a href="#0">OnlineCop</a></li>
+							<li class="member-list-item"><a href="#0">zapduino</a></li>
+							<li class="member-list-item"><a href="#0">robertmaxrees</a></li>
+							<li class="member-list-item"><a href="#0">petehunt</a></li>
+							<li class="member-list-item"><a href="#0">GothAlice</a></li>
+							<li class="member-list-item"><a href="#0">james</a></li>
+							<li class="member-list-item"><a href="#0">jonty</a></li>
+							<li class="member-list-item"><a href="#0">RJ</a></li>
+							<li class="member-list-item"><a href="#0">russ</a></li>
+							<li class="member-list-item"><a href="#0">sam</a></li>
+							<li class="member-list-item"><a href="#0">beneb</a></li>
+							<li class="member-list-item"><a href="#0">GreenJello</a></li>
+							<li class="member-list-item"><a href="#0">jrburke</a></li>
+							<li class="member-list-item"><a href="#0">dlmanning</a></li>
+							<li class="member-list-item"><a href="#0">ben_alman</a></li>
+							<li class="member-list-item"><a href="#0">terinjokes</a></li>
+							<li class="member-list-item"><a href="#0">ankh</a></li>
+						</ul>
+					</section>
+				</div>
+
+				<div id="skip-link-after-member-list" tabindex="-1"></div>
+			</div>
+		</aside>
+
+		<aside class="network-list-sidebar" aria-label="Network and channel list">
+			<div class="network-list-sidebar-inner">
+				<a href="#skip-link-after-channel-list" class="accessibility-skip-link" aria-describedby="aria-after-channel-list-skip-link-description">
+					Skip over Network and Channel List
+					<div class="accessibility-skip-link-description" id="aria-after-channel-list-skip-link-description">Press Enter</div>
+				</a>
+
+				<div class="network-list-wrapper">
+					<section class="channel-list-group is-unread">
+						<h2 class="channel-list-network-name">freenode</h2>
+						<ul class="channel-list" role="navigation" aria-label="freenode channel list">
+							<li><a href="#0" class="channel-list-item">#css</a></li>
+							<li><a href="#0" class="channel-list-item">#github</a></li>
+							<li><a href="#0" class="channel-list-item is-unread">#javascript</a></li>
+							<li><a href="#0" class="channel-list-item is-unread">#reactjs</a></li>
+							<li><a href="#0" class="channel-list-item">#svg</a></li>
+							<li><a href="#0" class="channel-list-item is-unread">#w3c</a></li>
+							<li><a href="#0" class="channel-list-item">#webrtc</a></li>
+						</ul>
+					</section>
+
+
+					<footer class="sidebar-footer" role="contentinfo">
+						<ul class="sidebar-footer-list">
+							<li class="sidebar-footer-list-item">Experiment by <a href="http://ericeastwood.com/">Eric Eastwood</a></li>
+							<li class="sidebar-footer-list-item"><a href="https://github.com/MadLittleMods/irccloud-layout-demo">Source on GitHub</a></li>
+						</ul>
+
+						<hr>
+
+						<p>This page is a recreation of the actual <a href="https://www.irccloud.com/">IRCCloud design/layout</a>.</p>
+					</footer>
+				</div>
+
+				<div id="skip-link-after-channel-list" tabindex="-1"></div>
+			</div>
+		</aside>
+	</div>
+
+
+</body>
+</html>
