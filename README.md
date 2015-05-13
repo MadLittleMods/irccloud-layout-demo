@@ -1,6 +1,6 @@
 # IRCCloud Layout experiment/demo
 
-A personal experiment/challenge to try to recreate the [IRCCloud](https://www.irccloud.com/) layout.
+A personal experiment/challenge to try to recreate the [IRCCloud](https://www.irccloud.com/) layout and merge website and Android app into one.
 
 My goal was to keep it as simple as possible while maintaining accuracy to the original app, and doing everything with just CSS.
 
@@ -55,9 +55,9 @@ Narrow vertical (phone):
 
 # Accessibility
 
- - Proper Aria attributes for screen readers
+ - Proper ARIA attributes for screen readers
  	 - Tested with [ChromeVox](http://www.chromevox.com/)
- 	 - [Aria live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) for chat area log. This will hint a screen reader to announce any new messages politely that get added to the DOM.
+ 	 - [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) for chat area log. This will hint a screen reader to announce any new messages politely that get added to the DOM.
  - Skip links for keyboard users to skip focus over potentially long lists of members or channels.
  	 - When tabbing through the site, when you reach the member or network/channel list a small link tab will slide in from the left. Just press enter and it will move your focus over the long list of links.
 
@@ -87,7 +87,7 @@ Right now the menus are accessible via `:hover` on either side which doesn't wor
 But swipe from left or right gestures with JS, just like the native Android app would improve the feel.
 
 
-## More Aria
+## More ARIA
 
  - Toggle `aria-hidden` attribute on sidebars when hidden with JavaScript.
  - Add live region to network/channel list to announce when there is unread messages in a channel
