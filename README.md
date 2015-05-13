@@ -4,7 +4,9 @@ A personal experiment/challenge to try to recreate the [IRCCloud](https://www.ir
 
 My goal was to keep it as simple as possible while maintaining accuracy to the original app, and doing everything with just CSS.
 
-**Note:** The is an experiment is just HTML and CSS but it could benefit from some JavaScript to get this site fully accessible and working better.
+**Note:** The is an experiment and is just HTML and CSS but it could benefit from some JavaScript to get this site fully accessible and working better.
+
+## View [Demo/live-site](https://madlittlemods.github.io/irccloud-layout-demo/dist/)
 
 
 # Overview
