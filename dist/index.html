@@ -21,8 +21,8 @@
 					<header class="site-header" role="banner">
 						<h1><a href="https://github.com/MadLittleMods/irccloud-layout-demo">IRCCloud Layout Experiment</a></h1>
 
-						<nav>
-							<ul class="status-action-list piped-list" role="navigation" aria-label="Personal">
+						<nav aria-label="Personal" role="navigation">
+							<ul class="status-action-list piped-list">
 								<li class="piped-list-item user-email"><a href="mailto:contact@ericeastwood.com">contact@ericeastwood.com</a></li>
 								<li class="piped-list-item"><a href="#0">Settings</a></li>
 								<li class="piped-list-item"><a href="#0">Shortcuts</a></li>
@@ -86,7 +86,7 @@
 			</div>
 		</main>
 
-		<aside class="member-list-sidebar" aria-label="Member list">
+		<aside class="member-list-sidebar" tabindex="0" aria-label="Member list">
 			<div class="member-list-sidebar-inner">
 				<a href="#skip-link-after-member-list" class="accessibility-skip-link" aria-describedby="aria-after-member-list-skip-link-description">
 					Skip over Member List
@@ -140,17 +140,17 @@
 			</div>
 		</aside>
 
-		<aside class="network-list-sidebar" aria-label="Network and channel list">
+		<aside class="network-list-sidebar" tabindex="0" aria-label="Network and channel list">
 			<div class="network-list-sidebar-inner">
 				<a href="#skip-link-after-channel-list" class="accessibility-skip-link" aria-describedby="aria-after-channel-list-skip-link-description">
 					Skip over Network and Channel List
 					<div class="accessibility-skip-link-description" id="aria-after-channel-list-skip-link-description">Press Enter</div>
 				</a>
 
-				<div class="network-list-wrapper">
+				<div class="network-list-wrapper" aria-label="freenode channel list" role="navigation">
 					<nav class="channel-list-group is-unread">
 						<h2 class="channel-list-network-name">freenode</h2>
-						<ul class="channel-list" role="navigation" aria-label="freenode channel list">
+						<ul class="channel-list">
 							<li><a href="#0" class="channel-list-item">#css</a></li>
 							<li><a href="#0" class="channel-list-item">#github</a></li>
 							<li><a href="#0" class="channel-list-item is-unread">#javascript</a></li>

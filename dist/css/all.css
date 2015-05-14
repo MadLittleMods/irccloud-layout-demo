@@ -425,7 +425,6 @@ hr{
 }
 
 .network-list-sidebar{
-	z-index:2;
 	position:relative;
 
 	display:-webkit-box;
@@ -473,6 +472,7 @@ hr{
 
 @media (max-width: 750px){
 	.network-list-sidebar{
+		z-index:2;
 		width:0;
 	}
 	.network-list-sidebar:hover, .network-list-sidebar:focus, .network-list-sidebar-trigger-menu-checkbox:checked ~ * .network-list-sidebar{
@@ -553,7 +553,7 @@ hr{
 }
 .member-list-sidebar{
 	overflow:visible;
-	z-index:2;
+	
 	position:relative;
 	pointer-events:none;
 
@@ -590,6 +590,7 @@ hr{
 }
 @media (max-width: 750px){
 	.member-list-sidebar{
+		z-index:2;
 		width:0;
 	}
 	.member-list-sidebar:hover, .member-list-sidebar:focus, .member-list-sidebar-trigger-menu-checkbox:checked ~ * .member-list-sidebar{
@@ -1047,6 +1048,16 @@ hr{
 	        flex:1;
 
 	line-height:1.3;
+
+	-webkit-transition:all 0.1s ease;
+
+	        transition:all 0.1s ease;
+}
+
+.channel-message-list:focus{
+	outline:none;
+	-webkit-box-shadow:inset 0 10px 10px -10px rgba(0, 0, 0, 0.25);
+	        box-shadow:inset 0 10px 10px -10px rgba(0, 0, 0, 0.25);
 }
 
 .channel-message-row{

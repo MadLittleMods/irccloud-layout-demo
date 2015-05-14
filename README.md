@@ -82,10 +82,9 @@ I couldn't figure out a better way than this to make it foolproof without repeat
 
 ## Swipe in menus
 
-Right now the menus are accessible via `:hover` on either side which doesn't work amazingly well on mobile. There is also a menu toggle for the network/channel list when in the narrow vertical phone layout mode.
+Right now the menus are accessible via `:hover`. You can tap on either side of the screen to trigger that `:hover` state. There is also a menu toggle for the network/channel list when in the narrow vertical phone layout mode.
 
 But swipe from left or right gestures with JS, just like the native Android app would improve the feel.
-
 
 ## More ARIA
 

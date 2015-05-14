@@ -173,8 +173,6 @@ hr {
 }
 
 .network-list-sidebar {
-	/* For Firefox, so that we can see the hover handles above the main section */
-	z-index: 2;
 	position: relative;
 
 	display: flex;
@@ -194,7 +192,9 @@ hr {
 	}
 
 	@media (max-width: $(small-breakpoint)) {
-		
+		/* For Firefox, so that we can actually hover the handles above the main section */
+		z-index: 2;
+
 		width: 0;
 
 		&:hover,
@@ -278,8 +278,7 @@ hr {
 }
 .member-list-sidebar {
 	overflow: visible;
-	/* For Firefox, so that we can see the hover handles above the main section */
-	z-index: 2;
+	
 	position: relative;
 	/* Stop from overlapping the site header */
 	/* This is set back to auto in a more child element */
@@ -299,6 +298,9 @@ hr {
 	
 	
 	@media (max-width: $(small-breakpoint)) {
+		/* For Firefox, so that we can actually hover the handles above the main section */
+		z-index: 2;
+
 		width: 0;
 
 		&:hover,
@@ -532,6 +534,15 @@ hr {
 	flex: 1;
 
 	line-height: 1.3;
+
+	transition: all 0.1s ease;
+	
+	&:focus {
+		outline: none;
+
+		/* hint a keyboard user that they can scroll with arrow keys */
+		box-shadow: inset 0 10px 10px -10px rgba(0, 0, 0, 0.25);
+	}
 }
 
 .channel-message-row {
