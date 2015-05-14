@@ -99,7 +99,7 @@ Hook up the [IRCCloud API](https://github.com/irccloud/irccloud-tools/wiki/API-O
 
 # Browser Support
 
-Browser support is essentially dictacted by [flex-box support](http://caniuse.com/#feat=flexbox) in browsers.
+Browser support is essentially dictated by [flex-box support](http://caniuse.com/#feat=flexbox) in browsers.
 
  - Chrome
  - Firefox
